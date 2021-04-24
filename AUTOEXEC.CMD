@@ -413,6 +413,16 @@ SET MERGE_HOME=%ProgramFiles%\Beyond Compare 4
 SET MERGE=bcomp
 SET PATH=%PATH%;%MERGE_HOME%\
 
+REM XMing
+SET XMING_HOME=%ProgramFiles%\Xming
+SET PATH=%PATH%;%XMING_HOME%\
+SET DISPLAY=:0
+
+REM VcXsrv
+SET VCX_HOME=%ProgramFiles%\VcXsrv
+SET PATH=%PATH%;%VCX_HOME%\
+SET DISPLAY=:0
+
 REM Git
 SET GIT_HOME=%ProgramFiles%\Git
 IF EXIST "%SSH%" SET GIT_SSH=%SSH%
