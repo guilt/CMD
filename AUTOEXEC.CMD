@@ -1,5 +1,5 @@
 @ECHO OFF
-REM Useful Startup Script
+REM Windows Autoexec
 
 REM Avoid if necessary
 REM SET AUTOEXECED=YES
