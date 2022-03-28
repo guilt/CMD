@@ -574,5 +574,9 @@ REM AWSSM
 SET AWS_SM_HOME=%ProgramFiles%\Amazon\SessionManagerPlugin
 SET PATH=%PATH%;%AWS_SM_HOME%\Bin
 
+REM GCloud
+SET GCLOUD_HOME=%USERPROFILE%\AppData\Local\Google\Cloud SDK\google-cloud-sdk
+SET PATH=%PATH%;%GCLOUD_HOME%\Bin
+
 REM End of Script
 :END
