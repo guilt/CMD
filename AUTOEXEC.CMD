@@ -376,7 +376,7 @@ SET ANT_HOME=%EXTDEV%\apache-ant-1.9.7
 SET PATH=%PATH%;%ANT_HOME%\bin
 
 REM Maven
-SET MAVEN_HOME=%EXTDEV%\apache-maven-3.6.1
+SET MAVEN_HOME=%EXTDEV%\apache-maven-3.8.6
 SET PATH=%PATH%;%MAVEN_HOME%\bin
 
 REM Gradle
