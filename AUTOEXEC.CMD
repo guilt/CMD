@@ -13,6 +13,13 @@ SET HOME=%HOMEDRIVE%%HOMEPATH%
 IF NOT EXIST "%HOME%" SET HOME=%USERPROFILE%
 SET USER=%USERNAME%
 
+REM Application Data
+SET AppDataLocal=%HOME%\AppData\Local
+SET AppDataLocalLow=%HOME%\AppData\LocalLow
+SET AppDataRemote=%HOME%\AppData\Remote
+SET AppDataRemoteLow=%HOME%\AppData\RemoteLow
+IF NOT EXIST "%APPDATA%" SET APPDATA=%AppDataRemote%
+
 REM Program Files (x86) Alias
 SET ProgramFiles(x86)=%ProgramFiles%
 IF NOT "%PROCESSOR_ARCHITECTURE%" == "x86" SET ProgramFiles(x86)=%ProgramFiles% (x86)
@@ -351,7 +358,7 @@ SET NODE_OPTIONS=--max_old_space_size=8192
 SET PATH=%PATH%;%NODE_HOME%\
 SET NPM_HOME=%NODE_HOME%\NodeJS\NPM
 SET PATH=%PATH%;%NPM_HOME%\
-SET PATH=%PATH%;%AppData%\NPM\
+SET PATH=%PATH%;%AppDataRemote%\NPM\
 
 REM Deno
 SET DENO_HOME=%EXTDEV\Deno-1.9.0
@@ -372,9 +379,8 @@ SET PATH=%JAVA_HOME%\bin;%PATH%
 SET JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
 
 REM Scala
-REM SET SCALA_BASE=%ProgramFiles(x86)%\Scala
-REM SET SCALA_HOME=%SCALA_BASE%\2.12
-REM SET PATH=%SCALA_HOME%\bin;%PATH%
+SET COURSIER_BASE=%AppDataLocal%\Coursier\Data
+SET PATH=%COURSIER_BASE%\bin;%PATH%
 
 REM Ant
 SET ANT_HOME=%EXTDEV%\apache-ant-1.9.7
@@ -581,7 +587,7 @@ SET AWS_SM_HOME=%ProgramFiles%\Amazon\SessionManagerPlugin
 SET PATH=%PATH%;%AWS_SM_HOME%\Bin
 
 REM GCloud
-SET GCLOUD_HOME=%USERPROFILE%\AppData\Local\Google\Cloud SDK\google-cloud-sdk
+SET GCLOUD_HOME=%AppDataLocal%\Google\Cloud SDK\google-cloud-sdk
 SET PATH=%PATH%;%GCLOUD_HOME%\Bin
 
 REM End of Script
