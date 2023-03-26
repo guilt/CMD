@@ -614,5 +614,5 @@ REM GCloud
 SET GCLOUD_HOME=%AppDataLocal%\Google\Cloud SDK\google-cloud-sdk
 SET PATH=%PATH%;%GCLOUD_HOME%\Bin
 
-REM End of Script
 :END
+REM End of Script
