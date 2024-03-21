@@ -14,12 +14,16 @@ IF NOT EXIST "%HOME%" SET HOME=%USERPROFILE%
 SET USER=%USERNAME%
 
 REM Application Data
-SET AppDataLocal=%HOME%\AppData\Local
-SET AppDataLocalLow=%HOME%\AppData\LocalLow
-SET AppDataRoaming=%HOME%\AppData\Roaming
-SET AppDataRemote=%HOME%\AppData\Remote
-SET AppDataRemoteLow=%HOME%\AppData\RemoteLow
-IF NOT EXIST "%APPDATA%" SET APPDATA=%AppDataRemote%
+IF "%AppData%" == "" SET AppData=%HOME%\AppData
+SET AppDataLocal=%AppData%\Local
+SET AppDataLocalLow=%AppData%\LocalLow
+SET AppDataRoaming=%AppData%\Roaming
+SET AppDataRemote=%AppData%\Remote
+SET AppDataRemoteLow=%AppData%\RemoteLow
+
+REM Application Data Aliases
+IF "%LocalAppData%" == "" SET LocalAppData=%AppDataLocal%
+IF NOT EXIST "%AppData%" SET AppData=%AppDataRemote%
 
 REM Program Files (x86) Alias
 SET ProgramFiles(x86)=%ProgramFiles%
@@ -655,6 +659,7 @@ REM Go
 SET GOROOT=%ProgramFiles%\Go
 SET PATH=%PATH%;%GOROOT%\Bin
 SET GOPATH=%HOME%\.Go
+SET GOCACHE=%HOME%\.Go\Cache
 SET PATH=%PATH%;%GOPATH%\Bin
 
 REM Rust
