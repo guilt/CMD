@@ -358,7 +358,7 @@ SET PHANTOM_HOME=%EXTDEV%\phantomjs-2.1.1-windows
 SET PATH=%PATH%;%PHANTOM_HOME%\Bin
 
 REM PrinceXML
-SET PRINCE_HOME=%ProgramFiles(x86)%\Prince
+SET PRINCE_HOME=%ProgramFiles%\Prince
 SET PATH=%PATH%;%PRINCE_HOME%;%PRINCE_HOME%\Engine\Bin
 
 REM OP Capture SDK
