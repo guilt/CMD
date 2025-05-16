@@ -675,11 +675,7 @@ SET UPX_VERSION=4.2.3
 SET UPX_HOME=%EXTDEV%\UPX-%UPX_VERSION%-Win%BITS%
 SET PATH=%UPX_HOME%;%PATH%
 
-REM GTK3 Runtimes
-SET GTK3_HOME=%ProgramFiles%\GTK3-Runtime-Win%BITS%
-SET PATH=%PATH%;%GTK3_HOME%\Bin
-
-REM Tex
+REM MiKTeX
 SET TEX_BASE=%EXTDEV%\MiKTeX
 SET TEXSYSTEM=miktex
 SET TEX_HOME=%TEX_BASE%\%TEXSYSTEM%
@@ -732,16 +728,14 @@ REM Rust
 SET CARGO_HOME=%HOME%\.Cargo
 SET PATH=%PATH%;%CARGO_HOME%\Bin
 
-REM AWSCLI
+REM AWS CLI and Session Manager
 SET AWS_CLI_HOME=%ProgramFiles%\Amazon\AWSCLIV2
 SET PATH=%PATH%;%AWS_CLI_HOME%
-
-REM AWSSM
 SET AWS_SM_HOME=%ProgramFiles%\Amazon\SessionManagerPlugin
 SET PATH=%PATH%;%AWS_SM_HOME%\Bin
 
-REM GCloud
-SET GCLOUD_HOME=%AppDataLocal%\Google\Cloud SDK\google-cloud-sdk
+REM Google Cloud
+SET GCLOUD_HOME=%AppDataLocal%\Google\Cloud SDK\Google-Cloud-SDK
 SET PATH=%PATH%;%GCLOUD_HOME%\Bin
 
 REM Current Path
