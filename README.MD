@@ -28,10 +28,8 @@ automatically.
 
 ## Thank You and Feedback
 
-Reach out to me for any feedback.
-
-Now Enjoy!
+All feedback welcome!
 
 * Author: Karthik Kumar Viswanathan
-* Web   : https://karthikkumar.org
-* Email : karthikkumar@gmail.com
+* Web   : [karthikkumar.org](http://karthikkumar.org)
+* Email : [me@karthikkumar.org](mailto:me@karthikkumar.org)

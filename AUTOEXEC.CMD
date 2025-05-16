@@ -741,5 +741,9 @@ SET PATH=%PATH%;%GCLOUD_HOME%\Bin
 REM Current Path
 SET PATH=.;%PATH%
 
+REM Execute All Arguments
+IF "%~1" == "" GOTO END
+%*
+
 :END
 REM End of Script
