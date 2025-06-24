@@ -14,16 +14,21 @@ IF NOT EXIST "%HOME%" SET HOME=%USERPROFILE%
 SET USER=%USERNAME%
 
 REM Application Data
-IF "%AppData%" == "" SET AppData=%HOME%\AppData
-SET AppDataLocal=%AppData%\Local
-SET AppDataLocalLow=%AppData%\LocalLow
-SET AppDataRoaming=%AppData%\Roaming
-SET AppDataRemote=%AppData%\Remote
-SET AppDataRemoteLow=%AppData%\RemoteLow
+SET AppHomeData=%HOME%\AppData
+IF "%AppData%" == "" SET AppData=%AppHomeData%
+IF NOT "%AppData%" == "%AppHomeData%" SET AppHomeData=%AppData%
+SET AppDataLocal=%AppHomeData%\Local
+SET AppDataLocalLow=%AppHomeData%\LocalLow
+SET AppDataRoaming=%AppHomeData%\Roaming
+SET AppDataRemote=%AppHomeData%\Remote
+SET AppDataRemoteLow=%AppHomeData%\RemoteLow
 
 REM Application Data Aliases
 IF "%LocalAppData%" == "" SET LocalAppData=%AppDataLocal%
-IF NOT EXIST "%AppData%" SET AppData=%AppDataRemote%
+IF "%RoamingAppData%" == "" SET RoamingAppData=%AppDataRoaming%
+
+REM Create Application Data if it does not Exist
+IF NOT EXIST "%AppData%" MKDIR "%AppData%" >NUL
 
 REM Program Files (x86) Alias
 SET ProgramFiles(x86)=%ProgramFiles%
@@ -609,6 +614,7 @@ SET LIB=%LIB%;%SQLITE_HOME%\LIB
 
 REM Redis
 SET REDIS_HOME=%ProgramFiles%\Redis
+SET REDISCLI_HISTFILE=NUL
 SET PATH=%PATH%;%REDIS_HOME%
 
 REM PuTTY
@@ -742,8 +748,8 @@ SET LIB=%LIB%;%YASM_HOME%\Lib\%PROCESSOR_ARCHITECTURE%
 REM Go
 SET GOROOT=%ProgramFiles%\Go
 SET PATH=%PATH%;%GOROOT%\Bin
-SET GOPATH=%HOME%\.Go
-SET GOCACHE=%HOME%\.Go\Cache
+SET GOPATH=%HOME%\Go
+SET GOCACHE=%GOPATH%\Cache
 SET PATH=%PATH%;%GOPATH%\Bin
 
 REM Rust
