@@ -31,8 +31,11 @@ REM Create Application Data if it does not Exist
 IF NOT EXIST "%AppData%" MKDIR "%AppData%" >NUL
 
 REM Program Files (x86) Alias
-SET ProgramFiles(x86)=%ProgramFiles%
+ECHO Processor Architecture is detected as "%PROCESSOR_ARCHITECTURE%"
 IF NOT "%PROCESSOR_ARCHITECTURE%" == "x86" SET ProgramFiles(x86)=%ProgramFiles% (x86)
+IF NOT "%PROCESSOR_ARCHITECTURE%" == "x86" GOTO NOX86
+IF NOT EXIST "%ProgramFiles(x86)%" SET ProgramFiles(x86)=%ProgramFiles%
+:NOX86
 
 REM Force Set Processor Architecture
 REM SET PROCESSOR_ARCHITECTURE=x86
@@ -97,10 +100,10 @@ IF "%NOVS%" == "YES" GOTO NOVS
 IF "%VSVER%" == "" SET VSVER=2022
 IF "%VSTRIM%" == "" SET VSTRIM=Community
 SET VSCOMN=NOEXIST
-IF NOT EXIST "%VSCOMN%" SET VSCOMN=%ProgramFiles(x86)%\Microsoft Visual Studio\%VSVER%\%VSTRIM%
-IF NOT EXIST "%VSCOMN%" SET VSCOMN=%ProgramFiles(x86)%\Microsoft Visual Studio %VSVER%
 IF NOT EXIST "%VSCOMN%" SET VSCOMN=%ProgramFiles%\Microsoft Visual Studio\%VSVER%\%VSTRIM%
 IF NOT EXIST "%VSCOMN%" SET VSCOMN=%ProgramFiles%\Microsoft Visual Studio %VSVER%
+IF NOT EXIST "%VSCOMN%" SET VSCOMN=%ProgramFiles(x86)%\Microsoft Visual Studio\%VSVER%\%VSTRIM%
+IF NOT EXIST "%VSCOMN%" SET VSCOMN=%ProgramFiles(x86)%\Microsoft Visual Studio %VSVER%
 IF NOT EXIST "%VSCOMN%" GOTO NOVS
 SET VSCOMNTOOLS=%VSCOMN%\Common7\IDE
 SET PATH=%PATH%;%VSCOMNTOOLS%
@@ -150,6 +153,7 @@ REM SET NOMING=YES
 IF "%NOMING%" == "YES" GOTO NOMING
 SET MINGDIR=NOEXIST
 IF NOT EXIST "%MINGDIR%" SET MINGDIR=%EXTDEV%\MinGW%BITS%
+IF NOT EXIST "%MINGDIR%" SET MINGDIR=%ProgramFiles%\Dev-Cpp\MinGW%BITS%
 IF NOT EXIST "%MINGDIR%" SET MINGDIR=%ProgramFiles(x86)%\Dev-Cpp\MinGW%BITS%
 IF NOT EXIST "%MINGDIR%" GOTO NOMING
 SET MINGPREFIX=%LIN_PROCESSOR_ARCHITECTURE%-w%BITS%-MinGW32
@@ -443,7 +447,7 @@ SET QAAC_HOME=%EXTDEV%\QAAC-2.71
 SET PATH=%PATH%;%QAAC_HOME%\%PROCESSOR_ARCHITECTURE%
 
 REM CDR-Tools
-SET CDRTOOLS_HOME=%ProgramFiles(x86)%\cdrtools
+SET CDRTOOLS_HOME=%ProgramFiles(x86)%\CDRTools
 SET PATH=%PATH%;%CDRTOOLS_HOME%
 
 REM 7Zip
@@ -624,7 +628,7 @@ SET SSH=%PUTTY_HOME%\Plink.exe
 SET PLINK_PROTOCOL=ssh
 
 REM GPG
-SET GPG_HOME=%ProgramFiles(x86)%\gnupg
+SET GPG_HOME=%ProgramFiles(x86)%\GnuPG
 SET PATH=%PATH%;%GPG_HOME%\Bin
 
 REM Nullsoft Scriptable Installation System
