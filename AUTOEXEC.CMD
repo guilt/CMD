@@ -67,8 +67,9 @@ REM Editor for Graphical Interface
 SET EDITOR=notepad
 
 REM Editor for Command Line Interface is Preferred if Available
-SET VIM_VER=90
-SET VIM_HOME=%ProgramFiles%\Vim\Vim%VIM_VER%
+IF "%VIM_VERSION%" == "" SET VIM_VERSION=90
+SET VIM_HOME=%ProgramFiles%\Vim\Vim%VIM_VERSION%
+IF NOT EXIST "%VIM_HOME%" SET VIM_HOME=%ProgramFiles%\Vim
 IF NOT EXIST "%VIM_HOME%" GOTO NOVIM
 SET EDITOR=vim
 SET PATH=%PATH%;%VIM_HOME%
