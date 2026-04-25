@@ -1,1 +1,7 @@
+# Backups
 *~
+*.BAK
+
+# Secrets
+SECRETS.*
+
